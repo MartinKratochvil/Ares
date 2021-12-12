@@ -42,7 +42,8 @@
             this.textBoxUsername.Name = "textBoxUsername";
             this.textBoxUsername.Size = new System.Drawing.Size(159, 34);
             this.textBoxUsername.TabIndex = 0;
-            this.textBoxUsername.Text = "Nitram293";
+            this.textBoxUsername.Text = "Username:";
+            this.textBoxUsername.Click += new System.EventHandler(this.textBoxUsername_Click);
             // 
             // textBoxPassword
             // 
@@ -50,7 +51,8 @@
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.Size = new System.Drawing.Size(159, 34);
             this.textBoxPassword.TabIndex = 1;
-            this.textBoxPassword.Text = "necumpico";
+            this.textBoxPassword.Text = "Password:";
+            this.textBoxPassword.Click += new System.EventHandler(this.textBoxPassword_Click);
             // 
             // buttonLogin
             // 
@@ -88,6 +90,7 @@
             this.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Login";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Login_FormClosed);
             this.Load += new System.EventHandler(this.Login_Load);

@@ -28,10 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.textBoxUsername = new System.Windows.Forms.TextBox();
             this.textBoxPassword1 = new System.Windows.Forms.TextBox();
             this.textBoxPassword2 = new System.Windows.Forms.TextBox();
             this.buttonRegister = new System.Windows.Forms.Button();
+            this.buttonBack = new System.Windows.Forms.Button();
+            this.timerCheck = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // textBoxUsername
@@ -41,7 +44,7 @@
             this.textBoxUsername.Name = "textBoxUsername";
             this.textBoxUsername.Size = new System.Drawing.Size(148, 34);
             this.textBoxUsername.TabIndex = 0;
-            this.textBoxUsername.Text = "Username";
+            this.textBoxUsername.Text = "Username:";
             this.textBoxUsername.Click += new System.EventHandler(this.textBoxUsername_Click);
             // 
             // textBoxPassword1
@@ -51,7 +54,7 @@
             this.textBoxPassword1.Name = "textBoxPassword1";
             this.textBoxPassword1.Size = new System.Drawing.Size(148, 34);
             this.textBoxPassword1.TabIndex = 1;
-            this.textBoxPassword1.Text = "Password";
+            this.textBoxPassword1.Text = "Password:";
             this.textBoxPassword1.Click += new System.EventHandler(this.textBoxPassword1_Click);
             // 
             // textBoxPassword2
@@ -61,7 +64,7 @@
             this.textBoxPassword2.Name = "textBoxPassword2";
             this.textBoxPassword2.Size = new System.Drawing.Size(148, 34);
             this.textBoxPassword2.TabIndex = 2;
-            this.textBoxPassword2.Text = "Password";
+            this.textBoxPassword2.Text = "Password:";
             this.textBoxPassword2.Click += new System.EventHandler(this.textBoxPassword2_Click);
             // 
             // buttonRegister
@@ -74,11 +77,26 @@
             this.buttonRegister.UseVisualStyleBackColor = true;
             this.buttonRegister.Click += new System.EventHandler(this.buttonRegister_Click);
             // 
+            // buttonBack
+            // 
+            this.buttonBack.Location = new System.Drawing.Point(168, 102);
+            this.buttonBack.Name = "buttonBack";
+            this.buttonBack.Size = new System.Drawing.Size(124, 34);
+            this.buttonBack.TabIndex = 5;
+            this.buttonBack.Text = "Back";
+            this.buttonBack.UseVisualStyleBackColor = true;
+            this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
+            // 
+            // timerCheck
+            // 
+            this.timerCheck.Tick += new System.EventHandler(this.timerCheck_Tick);
+            // 
             // Register
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 27F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(328, 154);
+            this.ClientSize = new System.Drawing.Size(306, 154);
+            this.Controls.Add(this.buttonBack);
             this.Controls.Add(this.buttonRegister);
             this.Controls.Add(this.textBoxPassword2);
             this.Controls.Add(this.textBoxPassword1);
@@ -86,6 +104,7 @@
             this.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Register";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Register";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Register_FormClosed);
             this.Load += new System.EventHandler(this.Register_Load);
@@ -100,5 +119,7 @@
         private System.Windows.Forms.TextBox textBoxPassword1;
         private System.Windows.Forms.TextBox textBoxPassword2;
         private System.Windows.Forms.Button buttonRegister;
+        private System.Windows.Forms.Button buttonBack;
+        private System.Windows.Forms.Timer timerCheck;
     }
 }

@@ -26,11 +26,18 @@ namespace Ares {
         WebSocket ws = new WebSocket("ws://194.15.112.30:5000");
         bool LoginSuc = false;
         private void buttonLogin_Click(object sender, EventArgs e) {
-            if (textBoxUsername.Text != "" && textBoxPassword.Text != "" && !textBoxUsername.Text.Contains("$") && !textBoxPassword.Text.Contains("$")) {
+            bool LogInf = true;
+            for (int i = 0; i < textBoxUsername.Text.Length; ++i) {
+                if (textBoxUsername.Text[i] < 48 || textBoxUsername.Text[i] > 57 && textBoxUsername.Text[i] < 65 || textBoxUsername.Text[i] > 90 && textBoxUsername.Text[i] < 97 || textBoxUsername.Text[i] > 122) { LogInf = false; }
+            }
+            for (int i = 0; i < textBoxPassword.Text.Length; ++i) {
+                if ((textBoxPassword.Text[i] < 48 || textBoxPassword.Text[i] > 57 && textBoxPassword.Text[i] < 65 || textBoxPassword.Text[i] > 90 && textBoxPassword.Text[i] < 97 || textBoxPassword.Text[i] > 122) && (textBoxPassword.Text[i] != '.' && textBoxPassword.Text[i] != ',' && textBoxPassword.Text[i] != '_' && textBoxPassword.Text[i] != '-')) { LogInf = false; }
+            }
+            if (textBoxUsername.Text != "" && textBoxPassword.Text != "" && textBoxUsername.Text != "Username:" && textBoxPassword.Text != "Password:" && textBoxUsername.Text.Length <= 12 && textBoxPassword.Text.Length <= 16 && LogInf) {
                 ws.Send("log$" + textBoxUsername.Text + "$" + textBoxPassword.Text);
                 ws.OnMessage += Ws_OnMessage;
             }
-            else { MessageBox.Show("Zadal jsi špatnou hodnotu!!"); }
+            else { MessageBox.Show("Zadal jsi špatnou hodnotu!!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
         /*private void button1_Click(object sender, EventArgs e) {
             WebSocket ws = new WebSocket("ws://194.15.112.30:5000");
@@ -46,7 +53,7 @@ namespace Ares {
         }*/
         private void Ws_OnMessage(object sender, MessageEventArgs e) {
             if (e.Data == "suc") { LoginSuc = true; }
-            else if (e.Data == "err") { MessageBox.Show("Vole zadal jsi spatne udaje"); }
+            else if (e.Data == "err") { MessageBox.Show("Zadal jsi špatné přihlašovací údaje!!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
             else { Application.Exit(); }
             ws.OnMessage -= Ws_OnMessage;
         }
@@ -64,6 +71,12 @@ namespace Ares {
                 MainMenu frame = new MainMenu();
                 frame.Show();
             }
+        }
+        private void textBoxUsername_Click(object sender, EventArgs e) {
+            if (textBoxUsername.Text == "Username:") { textBoxUsername.Text = ""; }
+        }
+        private void textBoxPassword_Click(object sender, EventArgs e) {
+            if (textBoxPassword.Text == "Password:") { textBoxPassword.Text = ""; }
         }
     }
 }

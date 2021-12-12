@@ -23,7 +23,6 @@ namespace Ares {
         string[] Text1 = new string[5], ShareId = new string[5];
         WebSocket ws = new WebSocket("ws://194.15.112.30:5000");
         private void MainMenu_Load(object sender, EventArgs e) {
-            timerCheck.Start();
             for (int i = 0; i < 5; i++) {
                 pole[i, 0] = new Label {
                     Name = "Username" + i + 0,
@@ -105,6 +104,8 @@ namespace Ares {
                 pictureBox2.Click += this.ReactSnd;
                 pictureBox3.Click += this.ReactSnd;
             }
+            Text1[0] = "";
+            timerCheck.Start();
             ws.Connect();
             ws.Send("req$1");
             ws.OnMessage += Ws_OnMessage;
@@ -127,17 +128,12 @@ namespace Ares {
                 }
             }
             if (Text1[0].StartsWith("ans")) {
-                if (Text1[0].Split('$')[1] == "like") { pole[Array.IndexOf(ShareId, Text1[0].Split('$')[2]), 3].Text = (Int32.Parse(pole[Array.IndexOf(ShareId, Text1[0].Split('$')[2]), 3].Text) + 1).ToString(); Text1[0] = ""; }
-                else if (Text1[0].Split('$')[1] == "notlike") { pole[Array.IndexOf(ShareId, Text1[0].Split('$')[2]), 3].Text = (Int32.Parse(pole[Array.IndexOf(ShareId, Text1[0].Split('$')[2]), 3].Text) - 1).ToString(); Text1[0] = ""; }
-                else if (Text1[0].Split('$')[1] == "poop") { pole[Array.IndexOf(ShareId, Text1[0].Split('$')[2]), 4].Text = (Int32.Parse(pole[Array.IndexOf(ShareId, Text1[0].Split('$')[2]), 4].Text) + 1).ToString(); Text1[0] = ""; }
-                else if (Text1[0].Split('$')[1] == "notpoop") { pole[Array.IndexOf(ShareId, Text1[0].Split('$')[2]), 4].Text = (Int32.Parse(pole[Array.IndexOf(ShareId, Text1[0].Split('$')[2]), 4].Text) - 1).ToString(); Text1[0] = ""; }
+                if (Text1[0].Split('$')[1] == "like") { pole[Array.IndexOf(ShareId, Text1[0].Split('$')[2]), 3].Text = (Int32.Parse(pole[Array.IndexOf(ShareId, Text1[0].Split('$')[2]), 3].Text) + 1).ToString(); }
+                else if (Text1[0].Split('$')[1] == "notlike") { pole[Array.IndexOf(ShareId, Text1[0].Split('$')[2]), 3].Text = (Int32.Parse(pole[Array.IndexOf(ShareId, Text1[0].Split('$')[2]), 3].Text) - 1).ToString(); }
+                else if (Text1[0].Split('$')[1] == "poop") { pole[Array.IndexOf(ShareId, Text1[0].Split('$')[2]), 4].Text = (Int32.Parse(pole[Array.IndexOf(ShareId, Text1[0].Split('$')[2]), 4].Text) + 1).ToString(); }
+                else if (Text1[0].Split('$')[1] == "notpoop") { pole[Array.IndexOf(ShareId, Text1[0].Split('$')[2]), 4].Text = (Int32.Parse(pole[Array.IndexOf(ShareId, Text1[0].Split('$')[2]), 4].Text) - 1).ToString(); }
+                Text1[0] = "";
             }
-            //MessageBox.Show((Array.IndexOf(ShareId, Text1[0].Split('$')[2])).ToString());
-            /*if (Text1[0].Split('$')[1] == "like")
-            {
-                MessageBox.Show((Array.IndexOf(ShareId, Text1[0].Split('$')[2])).ToString());
-                //MessageBox.Show(Text1[0].Split('$')[2]);
-            }*/
         }
         private void buttonSend_Click(object sender, EventArgs e) {
             ws.Send("new$" + Login.Username + "$" + Login.Password + "$" + textBox1.Text);
@@ -165,12 +161,6 @@ namespace Ares {
                 ws.Send("setpoop$" + Login.Username + "$" + Login.Password + "$" + ShareId[Int32.Parse((sender as PictureBox).Name[(sender as PictureBox).Name.Length - 1].ToString())]);
             }
             else { }
-        }
-        private void PoopSnd(object sender, EventArgs e) {
-            MessageBox.Show("Poop");
-        }
-        private void CommentSnd(object sender, EventArgs e) {
-            MessageBox.Show("Comment");
         }
     }
 }

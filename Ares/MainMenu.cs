@@ -162,5 +162,10 @@ namespace Ares {
             }
             else { }
         }
+        private void pictureBox1_Click(object sender, EventArgs e) {
+                this.Hide();
+                Profile profile = new Profile();
+                profile.Show();
+        }
     }
 }

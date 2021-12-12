@@ -166,7 +166,15 @@ namespace Ares {
             }
             else { }
         }
-        private void PoopSnd(object sender, EventArgs e) {
+
+		private void pictureBox1_Click(object sender, EventArgs e)
+		{
+            this.Hide();
+            Profile profile = new Profile();
+            profile.Show();
+		}
+
+		private void PoopSnd(object sender, EventArgs e) {
             MessageBox.Show("Poop");
         }
         private void CommentSnd(object sender, EventArgs e) {

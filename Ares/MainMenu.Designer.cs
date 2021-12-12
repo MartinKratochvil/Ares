@@ -42,14 +42,14 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 376);
+            this.textBox1.Location = new System.Drawing.Point(12, 631);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 30);
+            this.textBox1.Size = new System.Drawing.Size(475, 30);
             this.textBox1.TabIndex = 2;
             // 
             // buttonSend
             // 
-            this.buttonSend.Location = new System.Drawing.Point(118, 371);
+            this.buttonSend.Location = new System.Drawing.Point(493, 628);
             this.buttonSend.Name = "buttonSend";
             this.buttonSend.Size = new System.Drawing.Size(98, 35);
             this.buttonSend.TabIndex = 3;
@@ -59,7 +59,7 @@
             // 
             // buttonNext
             // 
-            this.buttonNext.Location = new System.Drawing.Point(680, 371);
+            this.buttonNext.Location = new System.Drawing.Point(732, 628);
             this.buttonNext.Name = "buttonNext";
             this.buttonNext.Size = new System.Drawing.Size(98, 35);
             this.buttonNext.TabIndex = 4;
@@ -69,7 +69,7 @@
             // 
             // buttonPrevious
             // 
-            this.buttonPrevious.Location = new System.Drawing.Point(576, 371);
+            this.buttonPrevious.Location = new System.Drawing.Point(628, 628);
             this.buttonPrevious.Name = "buttonPrevious";
             this.buttonPrevious.Size = new System.Drawing.Size(98, 35);
             this.buttonPrevious.TabIndex = 5;
@@ -81,7 +81,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(790, 418);
+            this.ClientSize = new System.Drawing.Size(842, 675);
             this.Controls.Add(this.buttonPrevious);
             this.Controls.Add(this.buttonNext);
             this.Controls.Add(this.buttonSend);
@@ -90,6 +90,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainMenu";
             this.Text = "MainMenu";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainMenu_FormClosed);
             this.Load += new System.EventHandler(this.MainMenu_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

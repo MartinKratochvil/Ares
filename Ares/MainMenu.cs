@@ -140,12 +140,7 @@ namespace Ares {
             textBox1.Text = "";
         }
         private void buttonPrevious_Click(object sender, EventArgs e) {
-            if (poc > 1) {
-                for (int i = 0; i < 5; i++) { ws.OnMessage -= Ws_OnMessage; }
-                --poc;
-                ws.Send("req$" + poc);
-                ws.OnMessage += Ws_OnMessage;
-            }
+
         }
         private void buttonNext_Click(object sender, EventArgs e) {
             for (int i = 0; i < 5; i++) { ws.OnMessage -= Ws_OnMessage; }
@@ -163,9 +158,9 @@ namespace Ares {
             else { }
         }
         private void pictureBox1_Click(object sender, EventArgs e) {
-                this.Hide();
-                Profile profile = new Profile();
-                profile.Show();
+            this.Hide();
+            Profile frame = new Profile();
+            frame.Show();
         }
     }
 }

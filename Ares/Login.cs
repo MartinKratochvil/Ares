@@ -22,7 +22,7 @@ namespace Ares {
         WebSocket ws = new WebSocket("ws://194.15.112.30:5000");
         bool LoginSuc = false;
         private void Login_Load(object sender, EventArgs e) {
-            timerCheck.Start();
+            //timerCheck.Start();
             ws.Connect();
         }
         private void Ws_OnMessage(object sender, MessageEventArgs e) {

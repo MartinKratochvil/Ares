@@ -18,13 +18,37 @@ namespace Ares {
         private void Login_FormClosed(object sender, FormClosedEventArgs e) {
             Application.Exit();
         }
-        private void Login_Load(object sender, EventArgs e) {
-            timerCheck.Start();
-            ws.Connect();
-        }
         public static string Username, Password;
         WebSocket ws = new WebSocket("ws://194.15.112.30:5000");
         bool LoginSuc = false;
+        private void Login_Load(object sender, EventArgs e) {
+            //timerCheck.Start();
+            ws.Connect();
+        }
+        private void Ws_OnMessage(object sender, MessageEventArgs e) {
+            if (e.Data == "suc") { LoginSuc = true; }
+            else if (e.Data == "err") { MessageBox.Show("Zadal jsi špatné přihlašovací údaje!!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            else { Application.Exit(); }
+            ws.OnMessage -= Ws_OnMessage;
+            MessageBox.Show("lll");
+            MainMenu frame = new MainMenu();
+            frame.Show();
+            MessageBox.Show("aaa");
+            this.Hide();
+            MessageBox.Show("sss");
+            
+        }
+        private void timerCheck_Tick(object sender, EventArgs e) {
+            if (LoginSuc) {
+                LoginSuc = false;
+                Username = textBoxUsername.Text;
+                Password = textBoxPassword.Text;
+                Login.ActiveForm.Hide();
+                this.Hide();
+                MainMenu frame = new MainMenu();
+                frame.Show();
+            }
+        }
         private void buttonLogin_Click(object sender, EventArgs e) {
             bool LogInf = true;
             for (int i = 0; i < textBoxUsername.Text.Length; ++i) {
@@ -39,38 +63,10 @@ namespace Ares {
             }
             else { MessageBox.Show("Zadal jsi špatnou hodnotu!!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
-        /*private void button1_Click(object sender, EventArgs e) {
-            WebSocket ws = new WebSocket("ws://194.15.112.30:5000");
-            ws.Connect();
-            ws.Send(textBox1.Text);
-            ws.Send("ahoj");
-            ws.Send("necum na me");
-
-            WebSocket ws = new WebSocket("ws://194.15.112.30:5000");
-            ws.OnMessage += Ws_OnMessage;
-            ws.Connect();
-            ws.Send("Pokus!");
-        }*/
-        private void Ws_OnMessage(object sender, MessageEventArgs e) {
-            if (e.Data == "suc") { LoginSuc = true; }
-            else if (e.Data == "err") { MessageBox.Show("Zadal jsi špatné přihlašovací údaje!!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
-            else { Application.Exit(); }
-            ws.OnMessage -= Ws_OnMessage;
-        }
         private void buttonRegister_Click(object sender, EventArgs e) {
             this.Hide();
             Register frame = new Register();
             frame.Show();
-        }
-        private void timerCheck_Tick(object sender, EventArgs e) {
-            if (LoginSuc) {
-                LoginSuc = false;
-                Username = textBoxUsername.Text;
-                Password = textBoxPassword.Text;
-                this.Hide();
-                MainMenu frame = new MainMenu();
-                frame.Show();
-            }
         }
         private void textBoxUsername_Click(object sender, EventArgs e) {
             if (textBoxUsername.Text == "Username:") { textBoxUsername.Text = ""; }

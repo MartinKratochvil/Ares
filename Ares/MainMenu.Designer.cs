@@ -32,8 +32,8 @@
             this.timerCheck = new System.Windows.Forms.Timer(this.components);
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.buttonSend = new System.Windows.Forms.Button();
-            this.buttonNext = new System.Windows.Forms.Button();
             this.buttonPrevious = new System.Windows.Forms.Button();
+            this.buttonNext = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -46,7 +46,7 @@
             // 
             this.textBox1.Location = new System.Drawing.Point(12, 631);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(475, 25);
+            this.textBox1.Size = new System.Drawing.Size(475, 30);
             this.textBox1.TabIndex = 2;
             // 
             // buttonSend
@@ -59,25 +59,25 @@
             this.buttonSend.UseVisualStyleBackColor = true;
             this.buttonSend.Click += new System.EventHandler(this.buttonSend_Click);
             // 
-            // buttonNext
-            // 
-            this.buttonNext.Location = new System.Drawing.Point(732, 628);
-            this.buttonNext.Name = "buttonNext";
-            this.buttonNext.Size = new System.Drawing.Size(98, 35);
-            this.buttonNext.TabIndex = 4;
-            this.buttonNext.Text = "Next";
-            this.buttonNext.UseVisualStyleBackColor = true;
-            this.buttonNext.Click += new System.EventHandler(this.buttonNext_Click);
-            // 
             // buttonPrevious
             // 
-            this.buttonPrevious.Location = new System.Drawing.Point(628, 628);
+            this.buttonPrevious.Location = new System.Drawing.Point(732, 628);
             this.buttonPrevious.Name = "buttonPrevious";
             this.buttonPrevious.Size = new System.Drawing.Size(98, 35);
-            this.buttonPrevious.TabIndex = 5;
+            this.buttonPrevious.TabIndex = 4;
             this.buttonPrevious.Text = "Previous";
             this.buttonPrevious.UseVisualStyleBackColor = true;
             this.buttonPrevious.Click += new System.EventHandler(this.buttonPrevious_Click);
+            // 
+            // buttonNext
+            // 
+            this.buttonNext.Location = new System.Drawing.Point(628, 628);
+            this.buttonNext.Name = "buttonNext";
+            this.buttonNext.Size = new System.Drawing.Size(98, 35);
+            this.buttonNext.TabIndex = 5;
+            this.buttonNext.Text = "Next";
+            this.buttonNext.UseVisualStyleBackColor = true;
+            this.buttonNext.Click += new System.EventHandler(this.buttonNext_Click);
             // 
             // pictureBox1
             // 
@@ -91,12 +91,12 @@
             // 
             // MainMenu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(842, 675);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.buttonPrevious);
             this.Controls.Add(this.buttonNext);
+            this.Controls.Add(this.buttonPrevious);
             this.Controls.Add(this.buttonSend);
             this.Controls.Add(this.textBox1);
             this.Font = new System.Drawing.Font("Microsoft YaHei", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
@@ -108,14 +108,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         #endregion
         private System.Windows.Forms.Timer timerCheck;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button buttonSend;
-        private System.Windows.Forms.Button buttonNext;
         private System.Windows.Forms.Button buttonPrevious;
+        private System.Windows.Forms.Button buttonNext;
 		private System.Windows.Forms.PictureBox pictureBox1;
 	}
 }

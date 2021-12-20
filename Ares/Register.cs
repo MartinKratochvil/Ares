@@ -18,12 +18,27 @@ namespace Ares {
         private void Register_FormClosed(object sender, FormClosedEventArgs e) {
             Application.Exit();
         }
+        WebSocket ws = new WebSocket("ws://194.15.112.30:5000");
+        bool LoginSuc = false;
         private void Register_Load(object sender, EventArgs e) {
             timerCheck.Start();
             ws.Connect();
         }
-        WebSocket ws = new WebSocket("ws://194.15.112.30:5000");
-        bool LoginSuc = false;
+        private void Ws_OnMessage(object sender, MessageEventArgs e) {
+            if (e.Data == "suc") { LoginSuc = true; }
+            else if (e.Data == "err") { MessageBox.Show("Tento uživatel již existuje!!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            ws.OnMessage -= Ws_OnMessage;
+        }
+        private void timerCheck_Tick(object sender, EventArgs e) {
+            if (LoginSuc) { 
+                LoginSuc = false;
+                Login.Username = textBoxUsername.Text;
+                Login.Password = textBoxPassword1.Text;
+                this.Hide();
+                MainMenu frame = new MainMenu();
+                frame.Show();
+            }
+        }
         private void buttonRegister_Click(object sender, EventArgs e) {
             bool LogInf = true;
             for (int i = 0; i < textBoxUsername.Text.Length; ++i) {
@@ -40,19 +55,6 @@ namespace Ares {
                 else { MessageBox.Show("Hesla nejsou stejná!!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
             }
             else { MessageBox.Show("Zadal jsi špatnou hodnotu!!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
-        }
-        private void Ws_OnMessage(object sender, MessageEventArgs e) {
-            if (e.Data == "suc") { LoginSuc = true; }
-            else if (e.Data == "err") { MessageBox.Show("Tento uživatel již existuje!!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
-            ws.OnMessage -= Ws_OnMessage;
-        }
-        private void timerCheck_Tick(object sender, EventArgs e) {
-            if (LoginSuc) { 
-                LoginSuc = false;
-                this.Hide();
-                MainMenu frame = new MainMenu();
-                frame.Show();
-            }
         }
         private void buttonBack_Click(object sender, EventArgs e) {
             this.Hide();
